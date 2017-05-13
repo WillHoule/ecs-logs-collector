@@ -181,7 +181,7 @@ pack()
   tar_bin="`which tar 2>/dev/null`"
   [ -z "${tar_bin}" ] && warning "TAR archiver not found, please install a TAR archiver to create the collection archive. You can still view the logs in the collect folder."
 
-  instance_id=$(curl -s curl http://169.254.169.254/latest/meta-data/instance-id)
+  instance_id=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
   curr_date=$(date +%F-%H)
 
   cd ${curdir}
