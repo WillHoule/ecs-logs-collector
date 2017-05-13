@@ -180,8 +180,11 @@ pack()
   tar_bin="`which tar 2>/dev/null`"
   [ -z "${tar_bin}" ] && warning "TAR archiver not found, please install a TAR archiver to create the collection archive. You can still view the logs in the collect folder."
 
+  instance_id=$(curl -s curl http://169.254.169.254/latest/meta-data/instance-id)
+  curr_date=$(date +%F-%H)
+
   cd ${curdir}
-  ${tar_bin} -czf ${infodir}.tgz ${infodir} > /dev/null 2>&1
+  ${tar_bin} -czf ecslogs-${instance_id}-${curr_date}.tgz ${infodir} > /dev/null 2>&1
 
   ok
 }
